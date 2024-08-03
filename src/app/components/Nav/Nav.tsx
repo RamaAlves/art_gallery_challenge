@@ -88,6 +88,7 @@ export function ResponsiveNav() {
                   <Button
                     component={RouterLink}
                     to={page.path}
+                    unstable_viewTransition
                     color="secondary"
                   >
                     {page.section}
@@ -130,6 +131,7 @@ export function ResponsiveNav() {
                 key={page.section}
                 component={RouterLink}
                 to={page.path}
+                unstable_viewTransition
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.section}
