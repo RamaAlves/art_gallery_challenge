@@ -7,6 +7,8 @@
 - Docker
 - Material UI
 - Vercel (proyecto desplegado)
+- react router dom (para manejo de rutas)
+- react query (para realizar peticiones a la API y cacheo de informacion)
 
 ## Ejecucion local
 
@@ -21,3 +23,7 @@
 ## Despliegue en Vercel
 
 - Si desea ver el proyecto desplegado en vercel puede hacerlo haciendo click [aquí](https://art-gallery-challenge.vercel.app/)
+
+## Diseño de baja fidelidad en Figma
+
+- Si desea ver el diseño prototipo del proyecto en baja fidelidad haga click [aquí](https://www.figma.com/design/FAKak2U4HLi9TTB9xcKGOG/Art-gallery?node-id=0-1&t=ayiNIVZ5cbSd0crM-1)

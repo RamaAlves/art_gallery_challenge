@@ -1,7 +1,10 @@
+import { Typography } from "@mui/material";
 export function Agents() {
   return (
     <div>
-      <h1>Agent</h1>
+      <Typography variant="h3" gutterBottom>
+        Agents
+      </Typography>
     </div>
   );
 }
