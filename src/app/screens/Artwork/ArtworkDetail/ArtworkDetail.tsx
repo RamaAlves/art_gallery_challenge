@@ -6,8 +6,7 @@ import {
   API_ARTWORKS,
   ARTWORK_FIELDS_FILTER,
 } from "../../../constants/urlsAPI";
-import { Box } from "@mui/material";
-import { Paper, Typography, Divider, Link } from "@mui/material";
+import { Paper, Typography, Divider, Link, Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 export function ArtworkDetail() {

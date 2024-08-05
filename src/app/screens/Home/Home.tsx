@@ -1,6 +1,5 @@
-import { Typography } from "@mui/material";
 import { Gallery } from "../../components/ui/Gallery/Gallery";
-import { Box, Link, Button, Divider } from "@mui/material";
+import { Box, Link, Button, Divider, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import {

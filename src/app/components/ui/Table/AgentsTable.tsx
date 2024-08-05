@@ -1,11 +1,13 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Link } from "@mui/material";
+import {
+  Link,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  Paper,
+  TableRow,
+  TableHead,
+} from "@mui/material";
 import { green, red } from "@mui/material/colors";
 import {
   CheckCircle as CheckCircleIcon,

@@ -1,7 +1,10 @@
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import { Box, Link } from "@mui/material";
+import {
+  Box,
+  Link,
+  ImageListItemBar,
+  ImageListItem,
+  ImageList,
+} from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { ArtworkDeatailArrayType } from "../../../interfaces/interfaces";
 
