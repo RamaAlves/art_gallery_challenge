@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-import { Typography } from "@mui/material";
-import { Box } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import { Search } from "@mui/icons-material";
+import { Box, Typography, Pagination, Stack } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useQuery } from "@tanstack/react-query";
 import { ArtworksTable } from "../../components/ui/Table/ArtworksTable";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import {
   API_ARTWORKS_SEARCH,
   ARTWORK_FIELDS_FILTER,
 } from "../../constants/urlsAPI";
 import { QUERY_KEY_ARTWORKS_FILTERED } from "../../constants/queryConstants";
 
-//<dangerouslySetInnerHTML={{ __html: html }}/>
 export function Artworks() {
   const [findArtwork, setFindArtwork] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [urlQuery, setUrlQuery] = useState<string>(
     `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${page}&${ARTWORK_FIELDS_FILTER}`
   );
+
   async function fetchFilteredArtwork() {
     const res = await fetch(urlQuery);
     const json = await res.json();
@@ -31,11 +30,8 @@ export function Artworks() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let query = "";
-    if (findArtwork != "") {
-      setPage(1);
-      query = `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${"1"}&${ARTWORK_FIELDS_FILTER}`;
-    }
+    const query = `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${"1"}&${ARTWORK_FIELDS_FILTER}`;
+    setPage(1);
     setUrlQuery(query);
   };
 
@@ -48,7 +44,7 @@ export function Artworks() {
   };
 
   const {
-    data: filteredArtworks,
+    data: artworksFiltered,
     status: statusFiltered,
     error: errorFiltered,
   } = useQuery({
@@ -85,11 +81,16 @@ export function Artworks() {
         <Box
           component="form"
           sx={{
-            "& > :not(style)": { my: 1, mx: { xs: 0, md: 1 }, width: "25ch" },
+            /* "& > :not(style)": { my: 1, mx: { xs: 0, md: 1 }, width: "25ch" }, */
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            gap: 2,
           }}
           noValidate
           autoComplete="off"
           onSubmit={handleSubmit}
+          onBlur={handleSubmit}
         >
           <TextField
             id="outlined-basic"
@@ -98,6 +99,12 @@ export function Artworks() {
             value={findArtwork}
             onChange={(e) => setFindArtwork(e.target.value)}
           />
+          <LoadingButton
+            loading={statusFiltered === "pending" ? true : false}
+            variant="contained"
+          >
+            <Search />
+          </LoadingButton>
         </Box>
         <Typography sx={{ alignSelf: { xs: "flex-start", md: "center" } }}>
           Page: {page}
@@ -106,13 +113,13 @@ export function Artworks() {
       <>
         {errorFiltered && <h2>{errorFiltered.message}</h2>}
         {statusFiltered === "pending" && <h2>Loading...</h2>}
-        {filteredArtworks && (
+        {artworksFiltered && (
           // Tabla
           <>
-            <ArtworksTable artworks={filteredArtworks.data} />
+            <ArtworksTable artworks={artworksFiltered.data} />
             <Stack spacing={4} sx={{ p: 4 }}>
               <Pagination
-                count={filteredArtworks.pagination.total_pages}
+                count={artworksFiltered.pagination.total_pages}
                 page={page}
                 onChange={handleChange}
               />

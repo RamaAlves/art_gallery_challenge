@@ -1,15 +1,52 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEY_ARTWORK_DETAIL } from "../../../constants/queryConstants";
-import { API_ARTWORKS } from "../../../constants/urlsAPI";
+import {
+  API_ARTWORKS,
+  ARTWORK_FIELDS_FILTER,
+} from "../../../constants/urlsAPI";
 import { Box } from "@mui/material";
 import { Paper, Typography, Divider, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 export function ArtworkDetail() {
   const { id } = useParams();
+
+  //states for artwork details
+  const [description, setDescription] = useState<string>("");
+  const [shortDescription, setShortDescription] = useState<string>("");
+  const [artistDisplay, setArtistDisplay] = useState<string>("");
+  const [artistTitle, setArtistTitle] = useState<string>("");
+  const [publicationHistory, setPucationHistory] = useState<string>("");
+  const [catalogueDisplay, setCatalogueDisplay] = useState<string>("");
+
+  //create html for fields of artwork details
+  function createDescription() {
+    return { __html: description };
+  }
+  function createShortDescription() {
+    return { __html: shortDescription };
+  }
+
+  function createArtistDisplay() {
+    return { __html: artistDisplay };
+  }
+
+  function createArtistTitle() {
+    return { __html: artistTitle };
+  }
+
+  function createPublicationHistory() {
+    return { __html: publicationHistory };
+  }
+
+  function createCatalogueDisplay() {
+    return { __html: catalogueDisplay };
+  }
+
   async function fetchArtwork() {
-    const res = await fetch(`${API_ARTWORKS}/${id}`);
+    const res = await fetch(`${API_ARTWORKS}/${id}?${ARTWORK_FIELDS_FILTER}`);
     const json = await res.json();
     if (json.error == "Not Found") {
       throw new Error(json);
@@ -19,12 +56,23 @@ export function ArtworkDetail() {
   }
   const {
     data: artwork,
-    status: artworStatus,
+    status: artworkStatus,
     error: artworkError,
   } = useQuery({
     queryKey: [QUERY_KEY_ARTWORK_DETAIL, id],
     queryFn: fetchArtwork,
   });
+
+  useEffect(() => {
+    if (artwork) {
+      setDescription(artwork.data.description);
+      setShortDescription(artwork.data.short_description);
+      setArtistDisplay(artwork.data.artist_display);
+      setArtistTitle(artwork.data.artist_title);
+      setPucationHistory(artwork.data.publication_history);
+      setCatalogueDisplay(artwork.data.catalogue_display);
+    }
+  }, [artwork]);
   return (
     <Box
       sx={{
@@ -36,7 +84,7 @@ export function ArtworkDetail() {
       }}
     >
       {artworkError && <h2>{artworkError.message}</h2>}
-      {artworStatus === "pending" && <h2>Loading...</h2>}
+      {artworkStatus === "pending" && <h2>Loading...</h2>}
       {artwork && (
         <>
           <Typography variant="h3" gutterBottom sx={{ alignSelf: "center" }}>
@@ -44,7 +92,7 @@ export function ArtworkDetail() {
           </Typography>
           <Divider component="hr" sx={{ width: { xs: "90vw", md: "80vw" } }} />
           <Divider component="br" />
-          <Paper variant="outlined">
+          <Paper variant="elevation" elevation={3} sx={{ p: 2, pb: 1 }}>
             <img
               srcSet={`${artwork.config.iiif_url}/${artwork.data.image_id}/full/200,/0/default.jpg 200w, ${artwork.config.iiif_url}/${artwork.data.image_id}/full/400,/0/default.jpg 400w, ${artwork.config.iiif_url}/${artwork.data.image_id}/full/843,/0/default.jpg 843w`}
               sizes="(min-width: 1640px) 843px, (min-width: 1200px) 400px, (min-width: 900px) 200px, (min-width: 600px) 90.63vw,  90.63vw"
@@ -64,17 +112,9 @@ export function ArtworkDetail() {
 
             <Typography variant="body1" gutterBottom>
               {artwork.data.description ? (
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: artwork.data.description,
-                  }}
-                ></p>
+                <div dangerouslySetInnerHTML={createDescription()} />
               ) : artwork.data.short_description ? (
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: artwork.short_description,
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={createShortDescription()}></p>
               ) : (
                 "No description"
               )}
@@ -85,32 +125,37 @@ export function ArtworkDetail() {
             </Typography>
             <Typography variant="body1" gutterBottom>
               {artwork.data.artist_display ? (
-                <Link
-                  to={`/agents/${artwork.data.artist_id}`}
-                  component={RouterLink}
-                  unstable_viewTransition
-                  color="inherit"
-                >
+                artwork.data.artist_id ? (
+                  <Link
+                    to={`/agents/${artwork.data.artist_id}`}
+                    component={RouterLink}
+                    unstable_viewTransition
+                    color="inherit"
+                  >
+                    <p
+                      style={{ whiteSpace: "pre" }}
+                      dangerouslySetInnerHTML={createArtistDisplay()}
+                    ></p>
+                  </Link>
+                ) : (
                   <p
                     style={{ whiteSpace: "pre" }}
-                    dangerouslySetInnerHTML={{
-                      __html: artwork.data.artist_display,
-                    }}
+                    dangerouslySetInnerHTML={createArtistDisplay()}
                   ></p>
-                </Link>
+                )
               ) : artwork.data.artist_title ? (
-                <Link
-                  to={`/agents/${artwork.data.artist_id}`}
-                  component={RouterLink}
-                  unstable_viewTransition
-                  color="inherit"
-                >
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: artwork.artist_title,
-                    }}
-                  ></p>
-                </Link>
+                artwork.data.artist_id ? (
+                  <Link
+                    to={`/agents/${artwork.data.artist_id}`}
+                    component={RouterLink}
+                    unstable_viewTransition
+                    color="inherit"
+                  >
+                    <p dangerouslySetInnerHTML={createArtistTitle()}></p>
+                  </Link>
+                ) : (
+                  <p dangerouslySetInnerHTML={createArtistTitle()}></p>
+                )
               ) : (
                 "No artist name"
               )}
@@ -154,22 +199,12 @@ export function ArtworkDetail() {
               {artwork.data.publication_history ? (
                 <>
                   Publications:
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: artwork.data.publication_history,
-                    }}
-                  ></p>
+                  <p dangerouslySetInnerHTML={createPublicationHistory()}></p>
                 </>
               ) : artwork.data.catalogue_display ? (
                 <>
                   Publications:
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: artwork.data.catalogue_display,
-                    }}
-                  >
-                    {artwork.data.catalogue_display}
-                  </p>
+                  <p dangerouslySetInnerHTML={createCatalogueDisplay()}></p>
                 </>
               ) : (
                 "Publications: No specified"
