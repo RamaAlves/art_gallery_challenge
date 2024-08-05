@@ -88,4 +88,21 @@ export interface ArtworkDeatailType {
   dimensions: string | null; // e.g. "Image/plate: 32.1 × 24.7 cm (12 11/16 × 9 3/4 in.); Sheet: 43.6 × 30 cm (17 3/16 × 11 13/16 in.)" medidas
 }
 
+export interface AgentDeatailType {
+  id: number;
+  title: string; // e.g. "Monet"
+  is_artist: boolean;
+  birth_date: number | null; // e.g. "1840"
+  death_date: number | null; // e.g. "1926"
+  description: string | null;
+}
+export type AgentDeatailArrayType = {
+  id: number;
+  title: string; // e.g. "Monet"
+  is_artist: boolean;
+  birth_date: number | null; // e.g. "1840"
+  death_date: number | null; // e.g. "1926"
+  description: string | null;
+}[];
+//id,title,is_artist,birth_date,death_date,description
 // id,title,thumbnail,date_display,artist_display,artist_title,artist_id,place_of_origin,artwork_type_title,image_id,short_description,description,publication_history,catalogue_display,medium_display,dimensions

@@ -15,7 +15,7 @@ export const routes = [
       { path: "/", element: <Home /> },
       { path: "/artworks", element: <Artworks /> },
       { path: "/artworks/:id", element: <ArtworkDetail /> },
-      { path: "/agents", element: Agents() },
+      { path: "/agents", element: <Agents /> },
       { path: "/agents/:id", element: <AgentDetail /> },
     ],
   },
