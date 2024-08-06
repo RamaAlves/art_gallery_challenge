@@ -63,7 +63,7 @@ export function Gallery({
               >
                 <img
                   style={{
-                    objectFit: "contain",
+                    objectFit: "cover",
                     maxWidth: "240px",
                     aspectRatio: "1",
                     margin: "0 auto",
@@ -122,7 +122,7 @@ export function Gallery({
             <ImageListItem key={item.id}>
               <img
                 style={{
-                  objectFit: "contain",
+                  objectFit: "cover",
                   maxWidth: "360px",
                   aspectRatio: "1",
                   margin: "0 auto",

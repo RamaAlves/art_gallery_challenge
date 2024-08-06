@@ -12,8 +12,9 @@ import Button from "@mui/material/Button";
 // import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from "@mui/icons-material/Adb";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { SwitchTheme } from "../ui/Switch/SwitchTheme";
+import { NavbarButton } from "../ui/Button/NavbarButton";
 
 const pages = [
   { section: "Artworks", path: "/artworks" },
@@ -21,6 +22,8 @@ const pages = [
 ];
 
 export function ResponsiveNav() {
+  const { pathname } = useLocation();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -128,15 +131,11 @@ export function ResponsiveNav() {
             }}
           >
             {pages.map((page) => (
-              <Button
+              <NavbarButton
                 key={page.section}
-                component={RouterLink}
-                to={page.path}
-                unstable_viewTransition
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page.section}
-              </Button>
+                page={page}
+                locationPath={pathname}
+              />
             ))}
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
