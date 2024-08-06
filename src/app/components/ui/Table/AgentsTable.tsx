@@ -12,6 +12,7 @@ import { green, red } from "@mui/material/colors";
 import {
   CheckCircle as CheckCircleIcon,
   Cancel as CancelIcon,
+  Loupe as LoupeIcon,
 } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -61,31 +62,37 @@ export function AgentsTable({ agents }: AgentsTableProps) {
                   "No description"
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell component="th" scope="row">
                 {agent.birth_date
                   ? agent.birth_date
                   : "No birth date specified"}
               </TableCell>
-              <TableCell>
+              <TableCell component="th" scope="row">
                 {agent.death_date ? agent.death_date : " - "}
               </TableCell>
-              <TableCell>
+              <TableCell component="th" scope="row">
                 {agent.is_artist ? (
                   <CheckCircleIcon sx={{ color: green[500] }} />
                 ) : (
                   <CancelIcon sx={{ color: red[500] }} />
                 )}
               </TableCell>
-              <TableCell>{agent.id}</TableCell>
-              <TableCell>
-                <Link
-                  to={`/agents/${agent.id}`}
-                  component={RouterLink}
-                  unstable_viewTransition
-                  color="inherit"
-                >
-                  More details
-                </Link>
+              <TableCell component="th" scope="row">
+                {agent.id}
+              </TableCell>
+              <TableCell component="th" scope="row">
+                {agent.is_artist ? (
+                  <Link
+                    to={`/agents/${agent.id}`}
+                    component={RouterLink}
+                    unstable_viewTransition
+                    color="inherit"
+                  >
+                    <LoupeIcon />
+                  </Link>
+                ) : (
+                  "-"
+                )}
               </TableCell>
             </TableRow>
           ))}

@@ -8,6 +8,7 @@ import {
 } from "../../../constants/urlsAPI";
 import { Paper, Typography, Divider, Link, Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import { SkeletonArtworkDetail } from "../../../components/Skeletons/SkeletonArtworkDetail";
 
 export function ArtworkDetail() {
   const { id } = useParams();
@@ -83,7 +84,7 @@ export function ArtworkDetail() {
       }}
     >
       {artworkError && <h2>{artworkError.message}</h2>}
-      {artworkStatus === "pending" && <h2>Loading...</h2>}
+      {artworkStatus === "pending" && <SkeletonArtworkDetail />}
       {artwork && (
         <>
           <Typography variant="h3" gutterBottom sx={{ alignSelf: "center" }}>
@@ -97,6 +98,8 @@ export function ArtworkDetail() {
               sizes="(min-width: 1640px) 843px, (min-width: 1200px) 400px, (min-width: 900px) 200px, (min-width: 600px) 90.63vw,  90.63vw"
               alt={artwork.data.title}
               src={artwork.data.thumbnail.lqip}
+              style={{ minWidth: "40vw", minHeight: "30vh" }}
+              loading="lazy"
             />
           </Paper>
           <Box

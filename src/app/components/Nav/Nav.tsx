@@ -72,7 +72,7 @@ export function ResponsiveNav() {
                     component={RouterLink}
                     to={page.path}
                     unstable_viewTransition
-                    color="secondary"
+                    color="inherit"
                   >
                     {page.section}
                   </Button>

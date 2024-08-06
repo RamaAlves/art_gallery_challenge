@@ -11,46 +11,48 @@ export function AgentsGrid({ agents }: AgentsTableProps) {
     <Box sx={{ flexGrow: 1, maxWidth: "80vw" }}>
       <Grid container spacing={2}>
         {agents.map((agent) => (
-          <>
-            <Grid
-              item
-              xs={2}
-              sx={{
-                display: { xs: "none", md: "grid" },
-                placeContent: "center",
-              }}
+          <Grid
+            key={agent.id}
+            item
+            xs={2}
+            sx={{
+              display: { xs: "none", md: "grid" },
+              placeContent: "center",
+            }}
+          >
+            <Link
+              component={RouterLink}
+              to={`/agents/${agent.id}`}
+              unstable_viewTransition
+              color="inherit"
             >
-              <Link
-                component={RouterLink}
-                to={`/agents/${agent.id}`}
-                unstable_viewTransition
-                color="inherit"
-              >
-                <Button variant="outlined" color="inherit">
-                  {agent.title}
-                </Button>
-              </Link>
-            </Grid>
-            <Grid
-              item
-              xs={6}
-              sx={{
-                display: { xs: "grid", md: "none" },
-                placeContent: "center",
-              }}
+              <Button variant="outlined" color="inherit">
+                {agent.title}
+              </Button>
+            </Link>
+          </Grid>
+        ))}
+        {agents.map((agent) => (
+          <Grid
+            key={agent.id + "_mobile"}
+            item
+            xs={6}
+            sx={{
+              display: { xs: "grid", md: "none" },
+              placeContent: "center",
+            }}
+          >
+            <Link
+              component={RouterLink}
+              to={`/agents/${agent.id}`}
+              unstable_viewTransition
+              color="inherit"
             >
-              <Link
-                component={RouterLink}
-                to={`/agents/${agent.id}`}
-                unstable_viewTransition
-                color="inherit"
-              >
-                <Button variant="outlined" color="inherit">
-                  {agent.title}
-                </Button>
-              </Link>
-            </Grid>
-          </>
+              <Button variant="outlined" color="inherit">
+                {agent.title}
+              </Button>
+            </Link>
+          </Grid>
         ))}
       </Grid>
     </Box>

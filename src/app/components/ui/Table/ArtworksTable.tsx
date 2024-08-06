@@ -49,7 +49,7 @@ export function ArtworksTable({ artworks }: ArtworksTableProps) {
                   "No description"
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell component="th" scope="row">
                 {artwork.artist_title ? (
                   <Link
                     to={`/agents/${artwork.artist_id}`}
@@ -63,13 +63,15 @@ export function ArtworksTable({ artworks }: ArtworksTableProps) {
                   "No artist name"
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell component="th" scope="row">
                 {artwork.place_of_origin
                   ? artwork.place_of_origin
                   : "no place specified"}
               </TableCell>
-              <TableCell>{artwork.id}</TableCell>
-              <TableCell>
+              <TableCell component="th" scope="row">
+                {artwork.id}
+              </TableCell>
+              <TableCell component="th" scope="row">
                 <Link
                   to={`/artworks/${artwork.id}`}
                   component={RouterLink}
