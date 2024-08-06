@@ -13,6 +13,8 @@ import {
 } from "../../../constants/queryConstants";
 import { Box, Typography, Divider, Pagination, Stack } from "@mui/material";
 import { Gallery } from "../../../components/ui/Gallery/Gallery";
+import { SkeletonGallery } from "../../../components/Skeletons/SkeletonGallery";
+import { SkeletonAgentDetail } from "../../../components/Skeletons/SkeletonAgentDetail";
 
 export function AgentDetail() {
   const { id } = useParams();
@@ -88,7 +90,8 @@ export function AgentDetail() {
       }}
     >
       {agentError && <h2>{agentError.message}</h2>}
-      {agentStatus === "pending" && <h2>Loading...</h2>}
+      {/* Skeletons while status pending */}
+      {agentStatus === "pending" && <SkeletonAgentDetail />}
       {agent && (
         <>
           <Typography variant="h3" gutterBottom sx={{ alignSelf: "center" }}>
@@ -133,7 +136,17 @@ export function AgentDetail() {
           </Typography>
           <>
             {errorFiltered && <h2>{errorFiltered.message}</h2>}
-            {statusFiltered === "pending" && <h2>Loading...</h2>}
+            {statusFiltered === "pending" && (
+              <SkeletonGallery
+                images={8}
+                columns={1}
+                gap={6}
+                height={600}
+                columnsMd={4}
+                gapMd={16}
+                heightMd={300}
+              />
+            )}
             {artworksFiltered && (
               <>
                 <Gallery

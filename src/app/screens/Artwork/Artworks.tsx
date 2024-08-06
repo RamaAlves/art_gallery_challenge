@@ -5,6 +5,8 @@ import { Box, Typography, Pagination, Stack } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useQuery } from "@tanstack/react-query";
 import { ArtworksTable } from "../../components/ui/Table/ArtworksTable";
+import { SkeletonTableArtworks } from "../../components/Skeletons/SkeletonTableArtworks";
+import { SkeletonPagination } from "../../components/Skeletons/SkeletonPagination";
 import {
   API_ARTWORKS_SEARCH,
   ARTWORK_FIELDS_FILTER,
@@ -12,10 +14,12 @@ import {
 import { QUERY_KEY_ARTWORKS_FILTERED } from "../../constants/queryConstants";
 
 export function Artworks() {
+  //set limit of artworks per page
+  const limit = 10;
   const [findArtwork, setFindArtwork] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [urlQuery, setUrlQuery] = useState<string>(
-    `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${page}&${ARTWORK_FIELDS_FILTER}`
+    `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${page}&limit=${limit}&${ARTWORK_FIELDS_FILTER}`
   );
 
   async function fetchFilteredArtwork() {
@@ -30,7 +34,7 @@ export function Artworks() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${"1"}&${ARTWORK_FIELDS_FILTER}`;
+    const query = `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${"1"}&limit=${limit}&${ARTWORK_FIELDS_FILTER}`;
     setPage(1);
     setUrlQuery(query);
   };
@@ -39,7 +43,7 @@ export function Artworks() {
     event.preventDefault();
     setPage(value);
     setUrlQuery(
-      `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${value}&${ARTWORK_FIELDS_FILTER}`
+      `${API_ARTWORKS_SEARCH}q=${findArtwork}&page=${value}&limit=${limit}&${ARTWORK_FIELDS_FILTER}`
     );
   };
 
@@ -112,7 +116,12 @@ export function Artworks() {
       </Box>
       <>
         {errorFiltered && <h2>{errorFiltered.message}</h2>}
-        {statusFiltered === "pending" && <h2>Loading...</h2>}
+        {statusFiltered === "pending" && (
+          <>
+            <SkeletonTableArtworks rows={limit} />
+            <SkeletonPagination />
+          </>
+        )}
         {artworksFiltered && (
           // Tabla
           <>

@@ -4,6 +4,7 @@ import { Search } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { useQuery } from "@tanstack/react-query";
 import { AgentsTable } from "../../components/ui/Table/AgentsTable";
+import { SkeletonTableAgents } from "../../components/Skeletons/SkeletonTableAgents";
 import {
   API_AGENTS_SEARCH,
   AGENT_FIELDS_FILTER,
@@ -11,10 +12,11 @@ import {
 import { QUERY_KEY_AGENTS_FILTERED } from "../../constants/queryConstants";
 
 export function Agents() {
+  const limit = 10;
   const [findAgent, setFindAgent] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [urlQuery, setUrlQuery] = useState<string>(
-    `${API_AGENTS_SEARCH}q=${findAgent}&page=${page}&${AGENT_FIELDS_FILTER}`
+    `${API_AGENTS_SEARCH}q=${findAgent}&page=${page}&limit=${limit}&${AGENT_FIELDS_FILTER}`
   );
 
   async function fetchFilteredAgent() {
@@ -29,7 +31,7 @@ export function Agents() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = `${API_AGENTS_SEARCH}q=${findAgent}&page=${"1"}&${AGENT_FIELDS_FILTER}`;
+    const query = `${API_AGENTS_SEARCH}q=${findAgent}&page=${"1"}&limit=${limit}&${AGENT_FIELDS_FILTER}`;
     setPage(1);
     setUrlQuery(query);
   };
@@ -38,7 +40,7 @@ export function Agents() {
     event.preventDefault();
     setPage(value);
     setUrlQuery(
-      `${API_AGENTS_SEARCH}q=${findAgent}&page=${value}&${AGENT_FIELDS_FILTER}`
+      `${API_AGENTS_SEARCH}q=${findAgent}&page=${value}&limit=${limit}&${AGENT_FIELDS_FILTER}`
     );
   };
 
@@ -111,7 +113,7 @@ export function Agents() {
       </Box>
       <>
         {errorFiltered && <h2>{errorFiltered.message}</h2>}
-        {statusFiltered === "pending" && <h2>Loading...</h2>}
+        {statusFiltered === "pending" && <SkeletonTableAgents rows={limit} />}
         {agentsFiltered && (
           // Tabla
           <>

@@ -1,9 +1,11 @@
+import { Suspense } from "react";
 import {
   Box,
   Link,
   ImageListItemBar,
   ImageListItem,
   ImageList,
+  Skeleton,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { ArtworkDeatailArrayType } from "../../../interfaces/interfaces";
@@ -48,30 +50,37 @@ export function Gallery({
               xl: "100%",
             },
             height: { height },
-            overflow: "auto",
           }}
           cols={columns}
           gap={gap}
         >
           {images.map((item) => (
             <ImageListItem key={item.id}>
-              <img
-                style={{
-                  objectFit: "scale-down",
-                  maxWidth: "80vw",
-                }}
-                srcSet={`${configImages}/${item.image_id}/full/200,/0/default.jpg 200w, ${configImages}/${item.image_id}/full/400,/0/default.jpg?w=248&fit=crop&auto=format&dpr=2 2x 400w, ${configImages}/${item.image_id}/full/843,/0/default.jpg?w=248&fit=crop&auto=format&dpr=2 2x 843w`}
-                src={`${
-                  item.thumbnail
-                    ? item.thumbnail?.lqip
-                    : `${configImages}/${item.image_id}/full/200,/0/default.jpg`
-                }?w=248&fit=crop&auto=format&dpr=2 2x`}
-                sizes="(min-width: 1640px) 843px, (min-width: 1200px) 843px, (min-width: 900px) 843px, (min-width: 600px) 90.63vw,  90.63vw"
-                alt={item.thumbnail ? item.thumbnail.alt_text : item.title}
-                loading="lazy"
-              />
+              <Suspense
+                fallback={
+                  <Skeleton variant="rectangular" width={240} height={240} />
+                }
+              >
+                <img
+                  style={{
+                    objectFit: "cover",
+                    maxWidth: "240px",
+                    aspectRatio: "1",
+                    margin: "0 auto",
+                  }}
+                  srcSet={`${configImages}/${item.image_id}/full/200,/0/default.jpg 200w, ${configImages}/${item.image_id}/full/400,/0/default.jpg?w=248&fit=crop&auto=format&dpr=2 2x 400w, ${configImages}/${item.image_id}/full/843,/0/default.jpg?w=248&fit=crop&auto=format&dpr=2 2x 843w`}
+                  src={`${
+                    item.thumbnail
+                      ? item.thumbnail?.lqip
+                      : `${configImages}/${item.image_id}/full/200,/0/default.jpg`
+                  }?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  sizes="(min-width: 1640px) 843px, (min-width: 1200px) 843px, (min-width: 900px) 843px, (min-width: 600px) 90.63vw,  90.63vw"
+                  alt={item.thumbnail ? item.thumbnail.alt_text : item.title}
+                  loading="lazy"
+                />
+              </Suspense>
               <ImageListItemBar
-                sx={{ overflow: "auto", maxWidth: "80vw" }}
+                sx={{ overflow: "auto", maxWidth: "240px" }}
                 title={item.title}
                 subtitle={<span>by: {item.artist_title}</span>}
                 position="below"
@@ -105,7 +114,6 @@ export function Gallery({
               xl: "100%",
             },
             height: { heightMd },
-            overflow: "auto",
           }}
           cols={columnsMd}
           gap={gapMd}
@@ -114,8 +122,10 @@ export function Gallery({
             <ImageListItem key={item.id}>
               <img
                 style={{
-                  objectFit: "scale-down",
-                  maxWidth: "20vw",
+                  objectFit: "cover",
+                  maxWidth: "360px",
+                  aspectRatio: "1",
+                  margin: "0 auto",
                 }}
                 srcSet={`${configImages}/${item.image_id}/full/200,/0/default.jpg 200w, ${configImages}/${item.image_id}/full/400,/0/default.jpg, ${configImages}/${item.image_id}/full/843,/0/default.jpg`}
                 src={`${
@@ -128,7 +138,7 @@ export function Gallery({
                 loading="lazy"
               />
               <ImageListItemBar
-                sx={{ overflow: "auto", maxWidth: "20vw" }}
+                sx={{ overflow: "auto", maxWidth: "360px" }}
                 title={item.title}
                 subtitle={<span>by: {item.artist_title}</span>}
                 position="below"
