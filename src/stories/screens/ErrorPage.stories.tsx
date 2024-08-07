@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SwitchTheme } from "./SwitchTheme";
+import { ErrorPage } from "../../app/screens/ErrorPage/ErrorPage";
 
 const meta = {
-  title: "SwitchTheme",
-  component: SwitchTheme,
+  title: "screens/ErrorPage/ErrorPage",
+  component: ErrorPage,
   tags: ["autodocs"],
-} satisfies Meta<typeof SwitchTheme>;
+} satisfies Meta<typeof ErrorPage>;
 
 export default meta;
 

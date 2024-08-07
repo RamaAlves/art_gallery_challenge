@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ArtworksTable } from "./ArtworksTable";
+import { ArtworksTable } from "../../../../app/components/ui/Table/ArtworksTable";
 
 const meta = {
   title: "ui/Table/ArtworksTable",

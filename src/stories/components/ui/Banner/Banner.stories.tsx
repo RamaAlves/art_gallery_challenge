@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Banner } from "./Banner";
+import { Banner } from "../../../../app/components/ui/Banner/Banner";
 
 const meta = {
   title: "ui/Banner",

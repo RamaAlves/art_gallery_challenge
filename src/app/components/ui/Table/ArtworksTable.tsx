@@ -1,11 +1,14 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Link } from "@mui/material";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Link,
+} from "@mui/material";
+import { Preview as PreviewIcon } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
 import { ArtworkDeatailArrayType } from "../../../interfaces/interfaces";
 
@@ -81,7 +84,7 @@ export function ArtworksTable({ artworks }: ArtworksTableProps) {
                   unstable_viewTransition
                   color="inherit"
                 >
-                  More details
+                  <PreviewIcon />
                 </Link>
               </TableCell>
             </TableRow>

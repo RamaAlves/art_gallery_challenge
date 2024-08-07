@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { AgentsGrid } from "./AgentsGrid";
+import { AgentsGrid } from "../../../../app/components/ui/Grid/AgentsGrid";
 
 const meta = {
   title: "ui/AgentsGrid",

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { NavbarButton } from "./NavbarButton";
+import { NavbarButton } from "../../../../app/components/ui/Button/NavbarButton";
 
 const meta: Meta<typeof NavbarButton> = {
-  title: "Nav/NavbarButton",
+  title: "ui/NavbarButton",
   component: NavbarButton,
   tags: ["autodocs"],
 };

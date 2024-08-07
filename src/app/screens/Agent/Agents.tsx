@@ -11,6 +11,10 @@ import {
 } from "../../constants/urlsAPI";
 import { QUERY_KEY_AGENTS_FILTERED } from "../../constants/queryConstants";
 
+/**
+ * Retorna una tabla paginada con los agentes.
+ * Contiene un buscador de agentes y botones que permiten la navegacion hacia mas detalles o el autor de la obra.
+ */
 export function Agents() {
   const limit = 10;
   const [findAgent, setFindAgent] = useState<string>("");

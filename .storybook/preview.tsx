@@ -16,15 +16,29 @@ import { withThemeFromJSXProvider } from "@storybook/addon-themes"; // Import th
 import { ColorModeProvider } from "../src/app/context/ColorModeContext.tsx";
 /* snipped for brevity */ /* 
 import { routes } from "../src/routes"; */
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryCache,
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import { Home } from "../src/app/screens/Home/Home.tsx";
 import { Artworks } from "../src/app/screens/Artwork/Artworks.tsx";
 import { ArtworkDetail } from "../src/app/screens/Artwork/ArtworkDetail/ArtworkDetail.tsx";
 import { Agents } from "../src/app/screens/Agent/Agents.tsx";
 import { AgentDetail } from "../src/app/screens/Agent/AgentDetail/AgentDetail.tsx";
 import { ErrorPage } from "../src/app/screens/ErrorPage/ErrorPage.tsx";
+import { initialize, mswLoader } from "msw-storybook-addon";
 
-const queryClient = new QueryClient();
+// Initialize msw-storybook-addon for mock service worker
+initialize();
+
+// use queryClient for querys
+const queryCache = new QueryCache();
+const queryClient = new QueryClient({ queryCache });
+
+// Create a theme instance.
 const theme = createTheme({
   palette: {
     mode: "dark",
@@ -37,6 +51,7 @@ const theme = createTheme({
   },
 });
 
+// Define the routes for the mock app
 export const routes = [
   {
     id: "main",
@@ -78,6 +93,7 @@ const preview: Preview = {
       },
     },
   },
+  loaders: [mswLoader],
 };
 
 export default preview;

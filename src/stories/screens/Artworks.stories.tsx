@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { AgentDetail } from "./AgentDetail";
+import { Artworks } from "../../app/screens/Artwork/Artworks";
 
 const meta = {
-  title: "screens/Agent/AgentDetail",
-  component: AgentDetail,
+  title: "screens/Artwork/Artworks",
+  component: Artworks,
   tags: ["autodocs"],
-} satisfies Meta<typeof AgentDetail>;
+} satisfies Meta<typeof Artworks>;
 
 export default meta;
 

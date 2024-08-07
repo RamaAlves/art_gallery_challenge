@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SkeletonAgentDetail } from "./SkeletonAgentDetail";
+import { Footer } from "../../../app/components/Footer/Footer";
 
 const meta = {
-  title: "Skeletons/SkeletonAgentDetail",
-  component: SkeletonAgentDetail,
+  title: "Nav/Footer",
+  component: Footer,
   tags: ["autodocs"],
-} satisfies Meta<typeof SkeletonAgentDetail>;
+} satisfies Meta<typeof Footer>;
 
 export default meta;
 

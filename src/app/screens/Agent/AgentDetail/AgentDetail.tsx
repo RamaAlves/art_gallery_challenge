@@ -17,12 +17,16 @@ import { SkeletonGallery } from "../../../components/ui/Skeletons/SkeletonGaller
 import { SkeletonAgentDetail } from "../../../components/ui/Skeletons/SkeletonAgentDetail";
 
 /**
- * retorna la vista detallada de un agente
+ * Retorna la vista detallada de un agente.
+ * Muestra la informacion del agente y las obras de arte relacionadas.
+ * Obtiene el id del agente de los parametros de la url y con ellos recupera los detalles del agente de la API.
+ * Luego, en otra consulta se recupera las obras de arte relacionadas al agente detallado.
  */
 export function AgentDetail() {
   const { id } = useParams();
   const [page, setPage] = useState<number>(1);
   const [agent_name, setAgentName] = useState<string>("");
+  //url query for artworks filtered by agent
   const [urlQueryArtworksFiltered, setUrlQueryArtworksFiltered] =
     useState<string>(
       `${API_ARTWORKS_SEARCH}q=${agent_name}&page=${page}&${ARTWORK_FIELDS_FILTER}`

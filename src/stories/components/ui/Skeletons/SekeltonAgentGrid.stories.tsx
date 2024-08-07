@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SkeletonAgentGrid } from "./SekeltonAgentGrid";
+import { SkeletonAgentGrid } from "../../../../app/components/ui/Skeletons/SekeltonAgentGrid";
 
 const meta = {
   title: "Skeletons/SkeletonAgentGrid",

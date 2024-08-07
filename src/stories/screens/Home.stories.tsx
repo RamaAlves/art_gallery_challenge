@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SkeletonPagination } from "./SkeletonPagination";
+import { Home } from "../../app/screens/Home/Home";
 
 const meta = {
-  title: "Skeletons/SkeletonPagination",
-  component: SkeletonPagination,
+  title: "screens/Home/Home",
+  component: Home,
   tags: ["autodocs"],
-} satisfies Meta<typeof SkeletonPagination>;
+} satisfies Meta<typeof Home>;
 
 export default meta;
 
