@@ -8,6 +8,8 @@ import {
   Link,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+
+/** Footer de la aplicación. Muestra las secciones de la aplicacion y permite la navegación  */
 export function Footer() {
   return (
     <Box

@@ -5,8 +5,8 @@ import { Box, Typography, Pagination, Stack } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useQuery } from "@tanstack/react-query";
 import { ArtworksTable } from "../../components/ui/Table/ArtworksTable";
-import { SkeletonTableArtworks } from "../../components/Skeletons/SkeletonTableArtworks";
-import { SkeletonPagination } from "../../components/Skeletons/SkeletonPagination";
+import { SkeletonTableArtworks } from "../../components/ui/Skeletons/SkeletonTableArtworks";
+import { SkeletonPagination } from "../../components/ui/Skeletons/SkeletonPagination";
 import {
   API_ARTWORKS_SEARCH,
   ARTWORK_FIELDS_FILTER,

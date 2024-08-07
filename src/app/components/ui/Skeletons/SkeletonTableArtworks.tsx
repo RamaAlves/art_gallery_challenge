@@ -10,9 +10,10 @@ import {
 } from "@mui/material";
 
 type SkeletonProps = {
+  /** Cantidad de filas que mostrará el skeleton */
   rows: number;
 };
-
+/** Skeleton que reenderiza una tabla de obras de arte mientras se esperan los datos de la API */
 export function SkeletonTableArtworks({ rows }: SkeletonProps) {
   const artworks = [];
   for (let i = 0; i < rows; i++) {

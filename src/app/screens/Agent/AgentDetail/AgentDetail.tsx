@@ -13,9 +13,12 @@ import {
 } from "../../../constants/queryConstants";
 import { Box, Typography, Divider, Pagination, Stack } from "@mui/material";
 import { Gallery } from "../../../components/ui/Gallery/Gallery";
-import { SkeletonGallery } from "../../../components/Skeletons/SkeletonGallery";
-import { SkeletonAgentDetail } from "../../../components/Skeletons/SkeletonAgentDetail";
+import { SkeletonGallery } from "../../../components/ui/Skeletons/SkeletonGallery";
+import { SkeletonAgentDetail } from "../../../components/ui/Skeletons/SkeletonAgentDetail";
 
+/**
+ * retorna la vista detallada de un agente
+ */
 export function AgentDetail() {
   const { id } = useParams();
   const [page, setPage] = useState<number>(1);

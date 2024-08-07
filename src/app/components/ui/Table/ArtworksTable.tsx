@@ -10,9 +10,12 @@ import { Link as RouterLink } from "react-router-dom";
 import { ArtworkDeatailArrayType } from "../../../interfaces/interfaces";
 
 type ArtworksTableProps = {
+  /**
+   * Array de obras a mostrar
+   */
   artworks: ArtworkDeatailArrayType;
 };
-
+/** Muestra la tabla de obras con informacion relevante y un boton que permite acceder a la vista detallada y otro que permite acceder al autor */
 export function ArtworksTable({ artworks }: ArtworksTableProps) {
   return (
     <TableContainer component={Paper}>

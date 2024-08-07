@@ -8,7 +8,7 @@ import {
 } from "../../../constants/urlsAPI";
 import { Paper, Typography, Divider, Link, Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { SkeletonArtworkDetail } from "../../../components/Skeletons/SkeletonArtworkDetail";
+import { SkeletonArtworkDetail } from "../../../components/ui/Skeletons/SkeletonArtworkDetail";
 
 export function ArtworkDetail() {
   const { id } = useParams();

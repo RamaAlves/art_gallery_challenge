@@ -1,14 +1,21 @@
 import { Box, ImageList, ImageListItem, Skeleton } from "@mui/material";
 type SkeletonGalleryProps = {
+  /** Cantidad de skeletons a mostrar */
   images: number;
+  /** Numero de columnas en mobile */
   columns: number;
+  /** Numero de columnas en desktop */
   columnsMd: number;
+  /** Gap en mobile */
   gap: number;
+  /** Gap en desktop */
   gapMd: number;
+  /** Altura del componente en mobile */
   height: number;
+  /** Altura del componente en desktop */
   heightMd: number;
 };
-
+/** Skeleton que simula la vista de una galeria de obras de arte mientras se esperan los datos de la API */
 export function SkeletonGallery({
   images,
   columns,

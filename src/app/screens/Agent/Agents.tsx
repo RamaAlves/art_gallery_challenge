@@ -4,7 +4,7 @@ import { Search } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { useQuery } from "@tanstack/react-query";
 import { AgentsTable } from "../../components/ui/Table/AgentsTable";
-import { SkeletonTableAgents } from "../../components/Skeletons/SkeletonTableAgents";
+import { SkeletonTableAgents } from "../../components/ui/Skeletons/SkeletonTableAgents";
 import {
   API_AGENTS_SEARCH,
   AGENT_FIELDS_FILTER,

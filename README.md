@@ -27,3 +27,7 @@
 ## Diseño de baja fidelidad en Figma
 
 - Si desea ver el diseño prototipo del proyecto en baja fidelidad haga click [aquí](https://www.figma.com/design/FAKak2U4HLi9TTB9xcKGOG/Art-gallery?node-id=0-1&t=ayiNIVZ5cbSd0crM-1)
+
+## Documentacion de componentes (storybook)
+
+- Abra la terminal y ejecute el comando `yarn storybook`. (Para visualizar correrctamente los componentes elija el fondo oscuro para las previews)

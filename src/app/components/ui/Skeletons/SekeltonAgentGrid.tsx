@@ -1,9 +1,11 @@
 import { Box, Grid, Skeleton } from "@mui/material";
 
 type SkeletonAgentGridProps = {
+  /**  Cantidad de botones que mostrará el skeleton */
   buttons: number;
 };
 
+/** Skeleton que reenderiza botones de manera responsive */
 export function SkeletonAgentGrid({ buttons }: SkeletonAgentGridProps) {
   const agents: number[] = [];
   for (let i = 0; i < buttons; i++) {
@@ -23,7 +25,7 @@ export function SkeletonAgentGrid({ buttons }: SkeletonAgentGridProps) {
               placeContent: "center",
             }}
           >
-            <Skeleton variant="rounded" width={200} height={40} />
+            <Skeleton variant="rounded" width={140} height={40} />
           </Grid>
         ))}
         {agents.map((agent) => (
