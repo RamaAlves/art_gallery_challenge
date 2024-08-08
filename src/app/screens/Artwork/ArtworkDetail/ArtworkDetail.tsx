@@ -110,7 +110,9 @@ export function ArtworkDetail() {
           <Box
             sx={{
               alignSelf: "flex-start",
-              ml: { xs: 2, md: 6, lg: 8, xl: 12 },
+              width: "100%",
+              ml: { xs: 0, md: 6, lg: 8, xl: 12 },
+              overflow: "auto",
             }}
           >
             <Typography variant="h5" gutterBottom>
