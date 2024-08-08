@@ -6,9 +6,10 @@
 - Yarn
 - Docker
 - Material UI
-- Vercel (proyecto desplegado)
-- react router dom (para manejo de rutas)
-- react query (para realizar peticiones a la API y cacheo de informacion)
+- [Vercel](https://art-gallery-challenge.vercel.app/) (proyecto desplegado)
+- React Router (para manejo de rutas)
+- TanStack Query (para realizar peticiones a la API y cacheo de información)
+- Storybook (Para documentación de componentes)
 
 ## Ejecucion local
 
