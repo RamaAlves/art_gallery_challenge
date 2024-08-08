@@ -4,6 +4,10 @@ import { DARK_MODE } from "../../../constants/localStorageConstants";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
+/**
+ * Switch que permite cambiar el tema de la aplicación.
+ * Maneja el tema claro y oscuro mediante el uso de un contexto.
+ */
 export function SwitchTheme() {
   const { darkMode, setDarkMode } = useColorMode();
   function changeTheme(state: boolean) {

@@ -21,9 +21,13 @@ import {
 } from "../../../interfaces/interfaces";
 
 type AgentsTableProps = {
+  /**
+   * Array de agentes a mostrar
+   */
   agents: AgentDeatailArrayType;
 };
 
+/** Muestra la tabla de agentes con informacion relevante y un boton que permite acceder a la vista detallada */
 export function AgentsTable({ agents }: AgentsTableProps) {
   function createAgentDescription(agent: AgentDeatailType) {
     return { __html: agent.description || "" };

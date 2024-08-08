@@ -4,13 +4,17 @@ import { Search } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { useQuery } from "@tanstack/react-query";
 import { AgentsTable } from "../../components/ui/Table/AgentsTable";
-import { SkeletonTableAgents } from "../../components/Skeletons/SkeletonTableAgents";
+import { SkeletonTableAgents } from "../../components/ui/Skeletons/SkeletonTableAgents";
 import {
   API_AGENTS_SEARCH,
   AGENT_FIELDS_FILTER,
 } from "../../constants/urlsAPI";
 import { QUERY_KEY_AGENTS_FILTERED } from "../../constants/queryConstants";
 
+/**
+ * Retorna una tabla paginada con los agentes.
+ * Contiene un buscador de agentes y botones que permiten la navegacion hacia mas detalles o el autor de la obra.
+ */
 export function Agents() {
   const limit = 10;
   const [findAgent, setFindAgent] = useState<string>("");

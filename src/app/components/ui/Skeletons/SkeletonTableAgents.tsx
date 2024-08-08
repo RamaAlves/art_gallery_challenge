@@ -10,9 +10,11 @@ import {
 } from "@mui/material";
 
 type SkeletonProps = {
+  /** Cantidad de filas que mostrará el skeleton */
   rows: number;
 };
 
+/** Skeleton que reenderiza una tabla de agentes mientras se esperan los datos de la API */
 export function SkeletonTableAgents({ rows }: SkeletonProps) {
   const agents = [];
   for (let i = 0; i < rows; i++) {

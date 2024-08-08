@@ -1,8 +1,17 @@
 import { Box, Divider, Typography, Skeleton } from "@mui/material";
 import { SkeletonGallery } from "./SkeletonGallery";
+
+/** Skeleton que simula la vista detallada de un agente mientras se esperan los datos de la API */
 export function SkeletonAgentDetail() {
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Typography variant="h3" gutterBottom sx={{ alignSelf: "center" }}>
         <Skeleton sx={{ width: { xs: 240, md: 600 } }} />
       </Typography>
@@ -30,7 +39,7 @@ export function SkeletonAgentDetail() {
         sx={{ px: { xs: 2, md: 6, lg: 8, xl: 12 } }}
       >
         <Skeleton
-          sx={{ width: { xs: 300, md: 800, lg: 1000, xl: 1200 } }}
+          sx={{ width: { xs: 300, md: 600, lg: 800, xl: 1000 } }}
           height={400}
         />
       </Typography>
@@ -47,6 +56,6 @@ export function SkeletonAgentDetail() {
         gapMd={16}
         heightMd={300}
       />
-    </>
+    </Box>
   );
 }

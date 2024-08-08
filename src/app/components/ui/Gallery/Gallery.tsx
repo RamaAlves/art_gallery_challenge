@@ -11,16 +11,40 @@ import { Link as RouterLink } from "react-router-dom";
 import { ArtworkDeatailArrayType } from "../../../interfaces/interfaces";
 
 type GalleryProps = {
+  /**
+   * Array de imagenes a mostrar
+   */
   images: ArtworkDeatailArrayType;
+  /**
+   * URL de la API de imagenes
+   */
   configImages: string;
+  /**
+   * Numero de columnas a mostrar en mobile
+   */
   columns: number;
+  /**
+   * Numero de columnas a mostrar en desktop
+   */
   columnsMd: number;
+  /**
+   * gap en mobile
+   */
   gap: number;
+  /**
+   * gap en desktop
+   */
   gapMd: number;
+  /**
+   * height en mobile
+   */
   height: number;
+  /**
+   * height en desktop
+   */
   heightMd: number;
 };
-
+/** Muestra la galeria de imagenes*/
 export function Gallery({
   images,
   configImages,
@@ -72,8 +96,8 @@ export function Gallery({
                   src={`${
                     item.thumbnail
                       ? item.thumbnail?.lqip
-                      : `${configImages}/${item.image_id}/full/200,/0/default.jpg`
-                  }?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      : `${configImages}/${item.image_id}/full/200,/0/default.jpg?w=248&fit=crop&auto=format&dpr=2 2x`
+                  }`}
                   sizes="(min-width: 1640px) 843px, (min-width: 1200px) 843px, (min-width: 900px) 843px, (min-width: 600px) 90.63vw,  90.63vw"
                   alt={item.thumbnail ? item.thumbnail.alt_text : item.title}
                   loading="lazy"
@@ -131,8 +155,8 @@ export function Gallery({
                 src={`${
                   item.thumbnail
                     ? item.thumbnail?.lqip
-                    : `${configImages}/${item.image_id}/full/200,/0/default.jpg`
-                }?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    : `${configImages}/${item.image_id}/full/200,/0/default.jpg?w=248&fit=crop&auto=format&dpr=2 2x`
+                }`}
                 sizes="(min-width: 1640px) 843px, (min-width: 1200px) 843px, (min-width: 900px) 843px, (min-width: 600px) 90.63vw,  90.63vw"
                 alt={item.thumbnail ? item.thumbnail.alt_text : item.title}
                 loading="lazy"

@@ -1,18 +1,24 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Link } from "@mui/material";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Link,
+} from "@mui/material";
+import { Preview as PreviewIcon } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
 import { ArtworkDeatailArrayType } from "../../../interfaces/interfaces";
 
 type ArtworksTableProps = {
+  /**
+   * Array de obras a mostrar
+   */
   artworks: ArtworkDeatailArrayType;
 };
-
+/** Muestra la tabla de obras con informacion relevante y un boton que permite acceder a la vista detallada y otro que permite acceder al autor */
 export function ArtworksTable({ artworks }: ArtworksTableProps) {
   return (
     <TableContainer component={Paper}>
@@ -78,7 +84,7 @@ export function ArtworksTable({ artworks }: ArtworksTableProps) {
                   unstable_viewTransition
                   color="inherit"
                 >
-                  More details
+                  <PreviewIcon />
                 </Link>
               </TableCell>
             </TableRow>

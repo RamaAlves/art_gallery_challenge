@@ -1,7 +1,15 @@
 import { Box, Divider, Skeleton, Typography } from "@mui/material";
+/** Skeleton que simula la vista detallada de una obra de arte mientras se esperan los datos de la API */
 export function SkeletonArtworkDetail() {
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Typography variant="h3" gutterBottom sx={{ alignSelf: "center" }}>
         <Skeleton sx={{ width: { xs: 240, md: 600 } }} />
       </Typography>
@@ -58,6 +66,6 @@ export function SkeletonArtworkDetail() {
           />
         </Typography>
       </Box>
-    </>
+    </Box>
   );
 }

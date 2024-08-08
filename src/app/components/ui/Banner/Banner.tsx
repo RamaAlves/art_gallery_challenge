@@ -1,5 +1,8 @@
 import { Box, Typography, Grid } from "@mui/material";
 
+/**
+ * Banner de la aplicacion
+ */
 export function Banner() {
   return (
     <Box

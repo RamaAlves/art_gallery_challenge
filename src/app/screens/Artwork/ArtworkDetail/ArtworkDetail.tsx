@@ -8,8 +8,13 @@ import {
 } from "../../../constants/urlsAPI";
 import { Paper, Typography, Divider, Link, Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { SkeletonArtworkDetail } from "../../../components/Skeletons/SkeletonArtworkDetail";
+import { SkeletonArtworkDetail } from "../../../components/ui/Skeletons/SkeletonArtworkDetail";
 
+/**
+ * Retorna la vista detallada de una obra de arte.
+ * Además de la información de la obra, muestra el autor y las publicaciones relacionadas.
+ * El nombre del autor es un enlace que lleva a la vista detallada del autor.
+ */
 export function ArtworkDetail() {
   const { id } = useParams();
 

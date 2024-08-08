@@ -5,10 +5,20 @@ import {
   ListItemText,
   ListSubheader,
   Divider,
-  Link,
 } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { FooterButton } from "../ui/Button/FooterButton";
+import { useLocation } from "react-router-dom";
+/**
+ * Footer de la aplicación.
+ * Muestra las secciones de la aplicacion y permite la navegación
+ */
 export function Footer() {
+  const { pathname } = useLocation();
+  const pages = [
+    { section: "Artworks", path: "/artworks" },
+    { section: "Agents", path: "/agents" },
+    { section: "Home", path: "/" },
+  ];
   return (
     <Box
       component="footer"
@@ -45,42 +55,13 @@ export function Footer() {
         }
       >
         <Divider sx={{ bgcolor: "white" }} />
-        <ListItem>
-          <ListItemText>
-            <Link
-              component={RouterLink}
-              sx={{ color: "white" }}
-              to="/"
-              color="primary"
-            >
-              Home
-            </Link>
-          </ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemText>
-            <Link
-              component={RouterLink}
-              to="/artworks"
-              sx={{ color: "white" }}
-              color="primary"
-            >
-              Artworks
-            </Link>
-          </ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemText>
-            <Link
-              component={RouterLink}
-              sx={{ color: "white" }}
-              to="/agents"
-              color="primary"
-            >
-              Agents
-            </Link>
-          </ListItemText>
-        </ListItem>
+        {pages.map((page) => (
+          <ListItem key={page.section}>
+            <ListItemText>
+              <FooterButton page={page} locationPath={pathname} />
+            </ListItemText>
+          </ListItem>
+        ))}
       </List>
       <p>©️ Copyright</p>
     </Box>

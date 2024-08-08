@@ -12,11 +12,14 @@ import {
   ARTWORK_FIELDS_FILTER,
 } from "../../constants/urlsAPI";
 import { Gallery } from "../../components/ui/Gallery/Gallery";
-import { SkeletonGallery } from "../../components/Skeletons/SkeletonGallery";
+import { SkeletonGallery } from "../../components/ui/Skeletons/SkeletonGallery";
 import { AgentsGrid } from "../../components/ui/Grid/AgentsGrid";
 import { Banner } from "../../components/ui/Banner/Banner";
-import { SkeletonAgentGrid } from "../../components/Skeletons/SekeltonAgentGrid";
+import { SkeletonAgentGrid } from "../../components/ui/Skeletons/SekeltonAgentGrid";
 
+/**
+ * Retorna la vista principal de la aplicacion
+ */
 export function Home() {
   const limitArtworks = 4;
   const limitAgents = 12;

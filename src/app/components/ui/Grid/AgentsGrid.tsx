@@ -4,8 +4,12 @@ import { Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 type AgentsTableProps = {
+  /**
+   * Array de agentes a mostrar
+   */
   agents: AgentDeatailArrayType;
 };
+/** Muestra botones con nombres de agentes y redirigen hacia la vista detallada del agente */
 export function AgentsGrid({ agents }: AgentsTableProps) {
   return (
     <Box sx={{ flexGrow: 1, maxWidth: "80vw" }}>

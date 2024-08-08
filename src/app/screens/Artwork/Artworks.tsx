@@ -5,14 +5,19 @@ import { Box, Typography, Pagination, Stack } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useQuery } from "@tanstack/react-query";
 import { ArtworksTable } from "../../components/ui/Table/ArtworksTable";
-import { SkeletonTableArtworks } from "../../components/Skeletons/SkeletonTableArtworks";
-import { SkeletonPagination } from "../../components/Skeletons/SkeletonPagination";
+import { SkeletonTableArtworks } from "../../components/ui/Skeletons/SkeletonTableArtworks";
+import { SkeletonPagination } from "../../components/ui/Skeletons/SkeletonPagination";
 import {
   API_ARTWORKS_SEARCH,
   ARTWORK_FIELDS_FILTER,
 } from "../../constants/urlsAPI";
 import { QUERY_KEY_ARTWORKS_FILTERED } from "../../constants/queryConstants";
 
+/**
+ * Retorna una tabla paginada con las obras de arte.
+ * Contiene un buscador de obras de arte y botones que permiten la navegacion hacia mas detalles o el autor de la obra.
+ * Entre los datos se muestra el nombre del autor. Este mismo sirve como enlace hacia la vista detallada del autor.
+ */
 export function Artworks() {
   //set limit of artworks per page
   const limit = 10;
@@ -126,11 +131,25 @@ export function Artworks() {
           // Tabla
           <>
             <ArtworksTable artworks={artworksFiltered.data} />
-            <Stack spacing={4} sx={{ p: 4 }}>
+            <Stack
+              spacing={4}
+              sx={{ p: 4, display: { xs: "none", md: "block" } }}
+            >
               <Pagination
                 count={artworksFiltered.pagination.total_pages}
                 page={page}
                 onChange={handleChange}
+              />{" "}
+            </Stack>
+            <Stack
+              spacing={4}
+              sx={{ px: 0, py: 4, display: { xs: "block", md: "none" } }}
+            >
+              <Pagination
+                count={artworksFiltered.pagination.total_pages}
+                page={page}
+                onChange={handleChange}
+                boundaryCount={0}
               />
             </Stack>
           </>

@@ -20,8 +20,10 @@ const pages = [
   { section: "Artworks", path: "/artworks" },
   { section: "Agents", path: "/agents" },
 ];
-
-export function ResponsiveNav() {
+/** Navbar de la aplicacion.
+ * Muestra enlaces hacia las diferentes secciones de la app y el boton para cambiar de tema (esquema de colores)
+ * */
+export function Nav() {
   const { pathname } = useLocation();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
