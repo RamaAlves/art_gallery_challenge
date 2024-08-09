@@ -11,8 +11,9 @@ const router = createBrowserRouter(routes, {
 // Create a client
 const queryClient = new QueryClient();
 
-function App() {
-  const { darkMode } = useColorMode();
+export function App(): JSX.Element {
+  const colorMode = useColorMode();
+  const darkMode = colorMode?.darkMode ?? false;
 
   const theme = createTheme({
     palette: {
@@ -34,5 +35,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;
