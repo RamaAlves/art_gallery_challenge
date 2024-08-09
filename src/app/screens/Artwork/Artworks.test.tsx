@@ -4,7 +4,7 @@ import { Artworks } from "./Artworks";
 import "@testing-library/jest-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import userEvent from "@testing-library/user-event";
-const MockData = {
+/* const MockData = {
   pagination: {
     total: 126065,
     limit: 12,
@@ -1038,7 +1038,7 @@ const MockData = {
     iiif_url: "https://www.artic.edu/iiif/2",
     website_url: "http://www.artic.edu",
   },
-};
+}; */
 
 const queryClient = new QueryClient();
 
