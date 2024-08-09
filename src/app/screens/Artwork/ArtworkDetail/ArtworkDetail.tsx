@@ -111,7 +111,7 @@ export function ArtworkDetail() {
             sx={{
               alignSelf: "flex-start",
               width: "100%",
-              ml: { xs: 0, md: 6, lg: 8, xl: 12 },
+              px: { xs: 0, md: 6, lg: 8, xl: 12 },
               overflow: "auto",
             }}
           >
@@ -119,7 +119,11 @@ export function ArtworkDetail() {
               Description:
             </Typography>
 
-            <Typography variant="body1" gutterBottom>
+            <Typography
+              variant="body1"
+              sx={{ maxWidth: "80vw", mx: "auto" }}
+              gutterBottom
+            >
               {artwork.data.description ? (
                 <div dangerouslySetInnerHTML={createDescription()} />
               ) : artwork.data.short_description ? (

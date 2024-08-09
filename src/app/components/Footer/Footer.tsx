@@ -5,9 +5,11 @@ import {
   ListItemText,
   ListSubheader,
   Divider,
+  Typography,
 } from "@mui/material";
 import { FooterButton } from "../ui/Button/FooterButton";
 import { useLocation } from "react-router-dom";
+import { styled } from "@mui/material/styles";
 /**
  * Footer de la aplicación.
  * Muestra las secciones de la aplicacion y permite la navegación
@@ -20,7 +22,7 @@ export function Footer() {
     { section: "Home", path: "/" },
   ];
   return (
-    <Box
+    <BoxCustom
       component="footer"
       sx={{
         display: "flex",
@@ -28,30 +30,30 @@ export function Footer() {
         justifyContent: "center",
         alignItems: "center",
         m: 0,
-        width: "100%",
-        bgcolor: "black",
-        color: "white",
+        width: "100%" /* 
+        bgcolor: "black", */ /* 
+        color: "white", */,
       }}
     >
-      <List
-        component="nav"
+      <ListCustom
+        /* component="nav" */
         aria-labelledby="Sections"
         sx={{
-          bgcolor: "black",
+          /* bgcolor: "black", */
           color: "white",
           minWidth: 240,
         }}
         subheader={
-          <ListSubheader
+          <ListSubheaderCustom
             sx={{
-              bgcolor: "black",
+              /* bgcolor: "black", */
               color: "white",
             }}
-            component="div"
+            /* component="div" */
             id="sections"
           >
             Sections
-          </ListSubheader>
+          </ListSubheaderCustom>
         }
       >
         <Divider sx={{ bgcolor: "white" }} />
@@ -62,8 +64,35 @@ export function Footer() {
             </ListItemText>
           </ListItem>
         ))}
-      </List>
-      <p>©️ Copyright</p>
-    </Box>
+      </ListCustom>
+      <TypographyCustom variant="body2">©️ Copyright</TypographyCustom>
+    </BoxCustom>
   );
 }
+
+const BoxCustom = styled(Box)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.grey[900]
+      : theme.palette.primary.main,
+}));
+
+const ListCustom = styled(List)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.grey[900]
+      : theme.palette.primary.main,
+}));
+
+const ListSubheaderCustom = styled(ListSubheader)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.grey[900]
+      : theme.palette.primary.main,
+}));
+const TypographyCustom = styled(Typography)(({ theme }) => ({
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.secondary.contrastText
+      : theme.palette.primary.contrastText,
+}));

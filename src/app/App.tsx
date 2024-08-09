@@ -15,9 +15,9 @@ export function App(): JSX.Element {
   const colorMode = useColorMode();
   const darkMode = colorMode?.darkMode ?? false;
 
-  const theme = createTheme({
+  const lightTheme = createTheme({
     palette: {
-      mode: darkMode ? "dark" : "light",
+      mode: "light",
       primary: {
         main: "#1b2d4a",
       },
@@ -26,8 +26,19 @@ export function App(): JSX.Element {
       },
     },
   });
+  const darkTheme = createTheme({
+    palette: {
+      mode: "dark",
+      primary: {
+        main: "#b3aff7",
+      },
+      secondary: {
+        main: "#ad8d38",
+      },
+    },
+  });
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <CssBaseline enableColorScheme />
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />

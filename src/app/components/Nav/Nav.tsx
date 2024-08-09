@@ -43,6 +43,7 @@ export function Nav() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            {/* icono menu abre el menu */}
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -55,6 +56,7 @@ export function Nav() {
             </IconButton>
             <Menu
               id="menu-appbar"
+              /* estado que define si se muestra o no el menu */
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: "bottom",
@@ -66,6 +68,7 @@ export function Nav() {
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
+              /* cierra el menu */
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
