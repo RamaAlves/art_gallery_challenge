@@ -2,14 +2,14 @@
 
 ## Stack de tecnologias
 
-- React + TypeScript + Vite
+- [React](https://es.react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vitejs.dev/)
 - Yarn
-- Docker
-- Material UI
-- [Vercel](https://art-gallery-challenge.vercel.app/) (proyecto desplegado)
-- React Router (para manejo de rutas)
-- TanStack Query (para realizar peticiones a la API y cacheo de información)
-- Storybook (para documentación de componentes)
+- [Docker](https://www.docker.com/)
+- [Material UI](https://mui.com/)
+- [Vercel](https://vercel.com/) (proyecto [desplegado](https://art-gallery-challenge.vercel.app/))
+- [React Router](https://reactrouter.com/en/main) (para manejo de rutas)
+- [TanStack Query](https://tanstack.com/query/latest) (para realizar peticiones a la API y cacheo de información)
+- [Storybook](https://storybook.js.org/) (para documentación de componentes)
 - [Jest](https://jestjs.io/) y [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) (para testing)
 
 ## Ejecucion local
