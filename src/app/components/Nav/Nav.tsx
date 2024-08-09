@@ -12,15 +12,20 @@ import Button from "@mui/material/Button";
 // import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from "@mui/icons-material/Adb";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { SwitchTheme } from "../ui/Switch/SwitchTheme";
+import { NavbarButton } from "../ui/Button/NavbarButton";
 
 const pages = [
   { section: "Artworks", path: "/artworks" },
   { section: "Agents", path: "/agents" },
 ];
+/** Navbar de la aplicacion.
+ * Muestra enlaces hacia las diferentes secciones de la app y el boton para cambiar de tema (esquema de colores)
+ * */
+export function Nav() {
+  const { pathname } = useLocation();
 
-export function ResponsiveNav() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -37,24 +42,8 @@ export function ResponsiveNav() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component={RouterLink}
-            to="/"
-            sx={{
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Art Gallery
-          </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            {/* icono menu abre el menu */}
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -67,6 +56,7 @@ export function ResponsiveNav() {
             </IconButton>
             <Menu
               id="menu-appbar"
+              /* estado que define si se muestra o no el menu */
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: "bottom",
@@ -78,6 +68,7 @@ export function ResponsiveNav() {
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
+              /* cierra el menu */
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
@@ -88,7 +79,8 @@ export function ResponsiveNav() {
                   <Button
                     component={RouterLink}
                     to={page.path}
-                    color="secondary"
+                    unstable_viewTransition
+                    color="inherit"
                   >
                     {page.section}
                   </Button>
@@ -117,8 +109,26 @@ export function ResponsiveNav() {
           >
             Art Gallery
           </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component={RouterLink}
+            to="/"
+            sx={{
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Art Gallery
+          </Typography>
+
           <Box
             sx={{
+              mr: 12,
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               justifyContent: "center",
@@ -126,14 +136,11 @@ export function ResponsiveNav() {
             }}
           >
             {pages.map((page) => (
-              <Button
+              <NavbarButton
                 key={page.section}
-                component={RouterLink}
-                to={page.path}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page.section}
-              </Button>
+                page={page}
+                locationPath={pathname}
+              />
             ))}
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>

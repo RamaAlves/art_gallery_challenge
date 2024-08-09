@@ -12,11 +12,11 @@ export const routes = [
     element: MainLayout(),
     errorElement: ErrorPage(),
     children: [
-      { path: "/", element: Home() },
-      { path: "/artworks", element: Artworks() },
-      { path: "/artworks/:id", element: ArtworkDetail() },
-      { path: "/agents", element: Agents() },
-      { path: "/agents/:id", element: AgentDetail() },
+      { path: "/", element: <Home /> },
+      { path: "/artworks", element: <Artworks /> },
+      { path: "/artworks/:id", element: <ArtworkDetail /> },
+      { path: "/agents", element: <Agents /> },
+      { path: "/agents/:id", element: <AgentDetail /> },
     ],
   },
 ];

@@ -1,46 +1,46 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json", "./tsconfig.app.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Art gallery challenge
 
 ## Stack de tecnologias
 
-- React + Vite + TypeScript
+- [React](https://es.react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vitejs.dev/)
 - Yarn
-- Docker
-- Material UI
+- [Docker](https://www.docker.com/)
+- [Material UI](https://mui.com/)
+- [Vercel](https://vercel.com/) (proyecto [desplegado](https://art-gallery-challenge.vercel.app/))
+- [React Router](https://reactrouter.com/en/main) (para manejo de rutas)
+- [TanStack Query](https://tanstack.com/query/latest) (para realizar peticiones a la API y cacheo de información)
+- [Storybook](https://storybook.js.org/) (para documentación de componentes)
+- [Jest](https://jestjs.io/) y [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) (para testing)
 
 ## Ejecucion local
 
-- yarn
-- yarn dev
+1. Abra la terminal y ejecute el comando `yarn`
+2. A continuacion ejecute el comando `yarn dev`
+3. Por ultimo dirijase a su navegador y el proyecto estara ejecutandose en el localhost:8000.
 
 ## Ejecucion con docker
 
 - seleccionar el archivo docker-compose.yml, hacer click y seleccionar la opcion `compose up`
+
+### Otra opción.
+
+- Ubicarse en la carpeta contenedora.
+- Ejecutar el comando `docker build -t <nombreDeLaImagen> .`
+- Luego ejecutar `docker run -d -p 8000:8000 <nombreDeLaImagen>`
+- Luego abrir el navegador y acceda a `http://localhost:8000/` alli encontrará la aplicacion corriendo.
+
+## Despliegue en Vercel
+
+- Si desea ver el proyecto desplegado en vercel puede hacerlo haciendo click [aquí](https://art-gallery-challenge.vercel.app/)
+
+## Diseño de baja fidelidad en Figma
+
+- Si desea ver el diseño prototipo del proyecto en baja fidelidad haga click [aquí](https://www.figma.com/design/FAKak2U4HLi9TTB9xcKGOG/Art-gallery?node-id=0-1&t=ayiNIVZ5cbSd0crM-1)
+
+## Documentacion de componentes
+
+- Abra la terminal y ejecute el comando `yarn storybook`. (Para visualizar correrctamente los componentes elija el fondo oscuro para las previews)
+
+## Testing de componentes
+
+- Abra la terminal y ejecute el comando `yarn test` o `yarn jest`.
