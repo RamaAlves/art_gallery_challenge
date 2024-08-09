@@ -16,11 +16,18 @@
 
 1. Abra la terminal y ejecute el comando `yarn`
 2. A continuacion ejecute el comando `yarn dev`
-3. Por ultimo dirijase a su navegador y el proyecto estara ejecutandose en [http://localhost:5173/](http://localhost:5173/)
+3. Por ultimo dirijase a su navegador y el proyecto estara ejecutandose en el localhost:8000.
 
 ## Ejecucion con docker
 
 - seleccionar el archivo docker-compose.yml, hacer click y seleccionar la opcion `compose up`
+
+### Otra opción.
+
+- Ubicarse en la carpeta contenedora.
+- Ejecutar el comando `docker build -t <nombreDeLaImagen> .`
+- Luego ejecutar `docker run -d -p 8000:8000 <nombreDeLaImagen>`
+- Luego abrir el navegador y acceda a `http://localhost:8000/` alli encontrará la aplicacion corriendo.
 
 ## Despliegue en Vercel
 
