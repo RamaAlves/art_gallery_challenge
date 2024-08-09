@@ -6,9 +6,11 @@
 - Yarn
 - Docker
 - Material UI
-- Vercel (proyecto desplegado)
-- react router dom (para manejo de rutas)
-- react query (para realizar peticiones a la API y cacheo de informacion)
+- [Vercel](https://art-gallery-challenge.vercel.app/) (proyecto desplegado)
+- React Router (para manejo de rutas)
+- TanStack Query (para realizar peticiones a la API y cacheo de información)
+- Storybook (para documentación de componentes)
+- [Jest](https://jestjs.io/) y [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) (para testing)
 
 ## Ejecucion local
 
@@ -28,6 +30,10 @@
 
 - Si desea ver el diseño prototipo del proyecto en baja fidelidad haga click [aquí](https://www.figma.com/design/FAKak2U4HLi9TTB9xcKGOG/Art-gallery?node-id=0-1&t=ayiNIVZ5cbSd0crM-1)
 
-## Documentacion de componentes (storybook)
+## Documentacion de componentes
 
 - Abra la terminal y ejecute el comando `yarn storybook`. (Para visualizar correrctamente los componentes elija el fondo oscuro para las previews)
+
+## Testing de componentes
+
+- Abra la terminal y ejecute el comando `yarn test` o `yarn jest`.

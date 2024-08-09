@@ -25,6 +25,7 @@ export function SwitchTheme() {
         color="secondary"
         control={<MaterialUISwitch sx={{ m: 1 }} />}
         label=""
+        test-id="switch-theme"
       />
     </>
   );
